@@ -1,0 +1,25 @@
+The solution involves using the `!important` flag to ensure that the intended style is applied despite the inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+.specific-p {
+  color: green;
+}
+
+#myDiv p {
+  color: purple !important; /* Now this rule works as expected */
+}
+
+#myDiv .specific-p {
+  color: orange; /* This is fine, it's the most specific */
+}
+```
+
+Alternatively, restructuring the CSS or using more specific selectors can eliminate the need for `!important` but may require larger changes to the CSS file.
