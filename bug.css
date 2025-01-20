@@ -1,0 +1,30 @@
+The following CSS code snippet demonstrates an uncommon issue where specificity and inheritance interact unexpectedly:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+.specific-p {
+  color: green;
+}
+
+#myDiv p {
+  color: purple; /* This rule is unexpectedly overridden */
+}
+
+#myDiv .specific-p {
+  color: orange; /* This is fine, it's the most specific */
+}
+
+<div id="myDiv">
+  <p class="specific-p">This text should be orange.</p>
+  <p>This text should be purple.</p>
+</div>
+```
+
+The expectation is that `#myDiv p` would style the first paragraph purple. However, the paragraph's `color:red` declaration inherited from the `p` selector and its higher specificity overrides the `#myDiv p` rule.
